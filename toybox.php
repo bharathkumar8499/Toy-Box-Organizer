@@ -18,6 +18,11 @@ foreach ($toys as $toy) {
 // Step-1:Create functions like `groupToysByType($toys)`
 
 function groupToysByType($toys) {
+
+    // Define the grouptoys variable which is array to store the grouped records
+    // loop the toys array  
+    // and then get toys type as key and store the value for that
+
     $groupToys = [];
     foreach ($toys as $toy) {
         $groupToys[$toy['type']][] = $toy;
