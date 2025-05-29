@@ -9,12 +9,6 @@ $toys = [
     ["name" => "Jumpy", "type" => "ball", "color" => "green"],
 ];
 
-// foreach ($toys as $toy) {
-//     echo $toy["name"] . " is a " . $toy["type"] . " and is " . $toy["color"] . ".\n";
-// }
-
-// More messy stuff goes here
-
 // Step-1:Create functions like `groupToysByType($toys)`
 
 function groupToysByType($toys) {
@@ -51,7 +45,7 @@ function findToysByColor($toys, $color){
 
 
 // grouped toys
-$groupedToys = groupToysByType($toys);
+// $groupedToys = groupToysByType($toys);
 //print_r($groupedToys);
 
 // here echo proper sentence like Speedy is a car and is red.
@@ -64,7 +58,7 @@ $groupedToys = groupToysByType($toys);
 
 
 // find toys by color
-$findToysByColor = findToysByColor($toys, "red");
+// $findToysByColor = findToysByColor($toys, "red");
 // print_r($findToysByColor);
 
 // here echo proper sentence like Speedy is a car and is red.   
@@ -95,6 +89,38 @@ $findToysByColor = findToysByColor($toys, "red");
                 echo "<li class='list-group-item'>{$toy['name']} is a {$toy['type']} and is {$toy['color']}.</li>";
             }
             echo "</ul>";
+        }
+        ?>
+
+        <!-- To find toys by color -->
+        <!--  Create a form to get the color from the user as input.-->
+        <!--  and then we need to submit the form inorder to get the result-->
+        <!--  when form is submitted, it call the findToysByColor function where along with color where we need to pass the user input color to it-->
+        <!-- here argumnet color will be in get method  -->
+        <!-- after that display the result in page -->
+        <h2 class="mt-4">Find Toys by Color</h2>
+        <form action="toybox.php" class="mt-4" method="get">
+            <div class="mb-3">
+                <label for="color" class="form-label">Enter Color:</label>
+                <input type="text" class="form-control" name="color" required placeholder="Enter Color like red" value="<?php echo isset($_GET['color']) ? $_GET['color'] : ''; ?>">
+            </div>  
+            <button type="submit" class="btn btn-primary">Find Toys</button>
+        </form>
+        <?php
+        if (isset($_GET['color'])) {
+            $color = $_GET['color'];
+            $getToys = findToysByColor($toys, $color);
+            // here check the count of getToys
+            if (count($getToys) > 0) {
+                echo "<h2 class='mt-4'>Toys that are {$color}</h2>";
+                echo "<ul class='list-group'>";
+                foreach ($getToys as $toy) {
+                    echo "<li class='list-group-item'>{$toy['name']} is a {$toy['type']} and is {$toy['color']}.</li>";
+                }
+                echo "</ul>";
+            } else {
+                echo "<h2 class='mt-4'>No toys found for color {$color}</h2>";
+            }
         }
         ?>
     </div>
