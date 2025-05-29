@@ -15,4 +15,28 @@ foreach ($toys as $toy) {
 
 // More messy stuff goes here
 
+// Step-1:Create functions like `groupToysByType($toys)`
+
+function groupToysByType($toys) {
+    $groupToys = [];
+    foreach ($toys as $toy) {
+        $groupToys[$toy['type']][] = $toy;
+    }
+    return $groupToys;
+}
+
+
+// grouped toys
+$groupedToys = groupToysByType($toys);
+//print_r($groupedToys);
+
+// here echo proper sentence like Speedy is a car and is red.
+foreach ($groupedToys as $type => $group) {
+    foreach ($group as $toy) {
+        echo "{$toy['name']} is a {$toy['type']} and is {$toy['color']}.\n";
+        echo "<br>";
+    }
+}
+
+
 ?>
