@@ -43,33 +43,35 @@ function findToysByColor($toys, $color){
 }
 
 
+// ==== clean code for showing logic alone ===
 
 // grouped toys
-// $groupedToys = groupToysByType($toys);
+$groupedToys = groupToysByType($toys);
 //print_r($groupedToys);
 
 // here echo proper sentence like Speedy is a car and is red.
-// foreach ($groupedToys as $type => $group) {
-//     foreach ($group as $toy) {
-//         echo "{$toy['name']} is a {$toy['type']} and is {$toy['color']}.\n";
-//         echo "<br>";
-//     }
-// }
+foreach ($groupedToys as $type => $group) {
+    foreach ($group as $toy) {
+        echo "{$toy['name']} is a {$toy['type']} and is {$toy['color']}.\n";
+        echo "<br>";
+    }
+}
 
 
 // find toys by color
-// $findToysByColor = findToysByColor($toys, "red");
+$findToysByColor = findToysByColor($toys, "red");
 // print_r($findToysByColor);
 
 // here echo proper sentence like Speedy is a car and is red.   
-// foreach ($findToysByColor as $toy) {
-//     echo "{$toy['name']} is a {$toy['type']} and is {$toy['color']}.\n";
-// }
+foreach ($findToysByColor as $toy) {
+    echo "{$toy['name']} is a {$toy['type']} and is {$toy['color']}.\n";
+}
 
 ?>
 
 
-<!-- show above result in html page  -->
+<!-- === same in html output along with bonus task ===  -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
