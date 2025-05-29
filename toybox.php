@@ -31,6 +31,25 @@ function groupToysByType($toys) {
 }
 
 
+// Step-2:Create a function like `findToysByColor($toys, $color)` where it used to find the Toys by color
+
+function findToysByColor($toys, $color){
+
+    // Define the matchedToys variable which is array to store the matched records
+    $matchedToys = [];
+    // loop the toys array
+    // and then get toys color as key and store it.
+    foreach ($toys as $toy) {
+        if ($toy['color'] === $color) {
+            $matchedToys[] = $toy;
+        }
+    }
+
+    return $matchedToys;
+}
+
+
+
 // grouped toys
 $groupedToys = groupToysByType($toys);
 //print_r($groupedToys);
@@ -43,5 +62,14 @@ foreach ($groupedToys as $type => $group) {
     }
 }
 
+
+// find toys by color
+$findToysByColor = findToysByColor($toys, "red");
+// print_r($findToysByColor);
+
+// here echo proper sentence like Speedy is a car and is red.
+foreach ($findToysByColor as $toy) {
+    echo "{$toy['name']} is a {$toy['type']} and is {$toy['color']}.\n";
+}
 
 ?>
